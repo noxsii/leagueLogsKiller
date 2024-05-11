@@ -23,12 +23,12 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
-        go-version: '1.22.3'
+        go-version: '1.22.3'  # Replace with the Go version you require
 
     - name: Build Go Binary
       run: |
         mkdir -p output
-        GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o output/myapp-${{ matrix.goos }}-${{ matrix.goarch }} ./path/to/main.go
+        GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o output/myapp-${{ matrix.goos }}-${{ matrix.goarch }} ./league-logs-killer.go
 
     - name: Upload Release Assets
       uses: actions/upload-artifact@v3
