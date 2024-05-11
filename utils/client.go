@@ -13,20 +13,20 @@ func FindLeagueClient(drives []string) (string, error) {
 
 	for _, baseDir := range drives {
 		if found {
-			break // Exit if the executable has already been found.
+			break
 		}
 
 		err := filepath.Walk(baseDir, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
-				return nil // Ignore errors during the walk.
+				return nil
 			}
 			if info.IsDir() && (info.Name() == "Windows" || info.Name() == "Program Files" || info.Name() == "Program Files (x86)") {
-				return filepath.SkipDir // Skip common non-target directories to speed up the search.
+				return filepath.SkipDir
 			}
 			if filepath.Base(path) == "LeagueClient.exe" {
 				leagueClient = path
-				found = true            // Set found to true to signal that the executable has been found.
-				return filepath.SkipDir // Stop searching this directory.
+				found = true
+				return filepath.SkipDir
 			}
 			return nil
 		})

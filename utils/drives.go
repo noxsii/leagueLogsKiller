@@ -13,5 +13,6 @@ func GetAllDrives() ([]string, error) {
 			drives = append(drives, path)
 		}
 	}
+
 	return drives, nil
 }
