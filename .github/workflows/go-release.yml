@@ -1,10 +1,9 @@
-# .github/workflows/go-release.yml
 name: Go Release Workflow
 
 on:
   push:
     tags:
-      - 'v*'  # Trigger on version tags like v1.0.0, v2.0.1, etc.
+      - 'v*'
 
 jobs:
   build:
@@ -23,7 +22,7 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
-        go-version: '1.22.3'  # Replace with the Go version you require
+        go-version: '1.22.3'
 
     - name: Build Go Binary
       run: |
@@ -49,6 +48,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ github.ref }}
-        files: target/release/league-logs-killer.exe
+        files: output/myapp-${{ matrix.goos }}-${{ matrix.goarch }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
