@@ -2,8 +2,9 @@ name: Go Release Workflow
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
